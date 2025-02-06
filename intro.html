@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<title>온라인 프로필</title>
+	<meta charset="utf-8">
+  <style>
+    table {
+      width:70%; 
+      border:1px solid #222; 
+      border-collapse: collapse; 
+      text-align: center;
+    }
+    thead {
+      background:#eee;  
+    }
+    th, td {
+      border:1px solid #ccc; 
+      padding : 5px;  
+      font-size: 15px; 
+    }
+
+    #container {
+        width: 1000px;
+        margin: 30px auto;
+        color: rgb(96, 96, 96);
+        
+    }
+
+    #side {
+        width: 300px;
+        height: 850px;
+        background-color: aliceblue;
+        float: left;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    #namecard {
+        margin: 20px auto;
+        color: rgb(96, 96, 96);
+        
+    }
+
+    #contents {
+        width: 550px;
+        height: 700px;
+        background-color: eee;
+        float: left;
+        padding-left: 50px;
+        
+    }
+
+    #detail {
+        margin-top: 50px;
+        
+    }
+
+    .subtitle {
+        background-color: rgb(233, 244, 253);
+        padding: 5px;
+    }
+
+    section {
+      margin-top: 30px;
+    }
+
+    .name {
+        background-color: rgb(207, 231, 252);
+        display: flex;
+        padding: 5px;
+        font-weight: bold;
+        
+    }
+    
+    .phone {
+        font-weight: bold;
+        background-color: rgb(207, 231, 252);
+        display: flex;
+        padding: 5px;
+    }
+
+    .img {
+        display: block;
+        margin: 0 auto;
+    }
+  
+  </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- 사이드바 -->
+        <div id="side">
+            <div id="namecard">
+                <img src="media/image1.jpeg" class="img">
+                <h1 class="name">이름</h1>
+                <h1>장원영</h1>    
+                <h2>Jang Wonyoung</h2>
+            </div>
+            <div id="detail">
+                <h1 class="phone">연락처</h1>
+                <h2>010-1234-5678</h2>
+                <h2>test@naver.com</h2> 
+                <h2><a href="#">SNS</a></h2>                                
+            </div>          
+        </div>
+        <div id="contents">
+            <section>
+                <h2 class="subtitle">자기소개</h2>
+                <p style="margin: 10px;"><mark>프로그래밍</mark>에 관심이 많습니다.
+                <p style="margin-left: 10px;">현재 열심히 공부하며 코딩 중!</p>
+            </section>
+
+            
+
+            <!-- 경력 -->
+            <section>
+                <h2 class="subtitle">Experience</h2>
+                <ul style="margin: 10px;">
+                    <li>프론트엔드
+                        <ul style="margin-top: 10px;">
+                            <li style="margin-bottom: 10px;">HTML/CSS/JAVASCRIPT </li>
+                            <li style="margin-bottom: 10px;">웹 페이지 잘 만든다 </li>
+                            <li style="margin-bottom: 10px;">다 잘함</li> 
+                        </ul>
+                    </li>
+                    <li>백엔드
+                        <ul style="margin-top: 10px;">
+                            <li style="margin-bottom: 10px;">자바 잘함 </li>
+                            <li>오라클 더 잘함</li>
+                        </ul>                        
+                    </li>
+                </ul>             
+            </section>
+
+
+            <!-- 숙련도 -->
+            <section>
+                <h2 class="subtitle">보유 기술</h2>
+                <li style="list-style: none; margin: 10px;"> 
+                    <ul>
+                        <li style="margin-bottom: 10px;">자바 </li>
+                        <li>오라클</li>
+                    </ul>                        
+                </li>
+            </section>
+
+
+            <!-- 학력 -->
+            <section>
+                <h2 class="subtitle">Education</h2>
+                <table style="margin: 10px;">
+                  <caption>학력 사항</caption>
+                  <thead>
+                      <tr>
+                          <th>출신학교</th>
+                          <th>전공</th>
+                          <th>기간</th>
+                          <th>구분</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>좋은대학교</td>
+                          <td>좋은학과</td>
+                          <td>2010.3 ~ 2013.2</td>
+                          <td>졸업</td>
+                      </tr>
+                      <tr>
+                          <td>꽤좋은고등학교</td>
+                          <td> - </td>
+                          <td>2007.3 ~ 2009.2</td>
+                          <td>졸업</td>
+                      </tr>
+                  </tbody>
+                </table>
+            </section>
+        </div>        
+    </div>
+</body>
+</html>
