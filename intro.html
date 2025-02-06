@@ -23,7 +23,10 @@
         width: 1000px;
         margin: 30px auto;
         color: rgb(96, 96, 96);
-        
+        display: flex;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 3px 1px lightgrey;
     }
 
     #side {
@@ -33,6 +36,7 @@
         float: left;
         padding-left: 50px;
         padding-right: 50px;
+        border-radius: 5px;
     }
 
     #namecard {
@@ -107,7 +111,7 @@
         <div id="contents">
             <section>
                 <h2 class="subtitle">자기소개</h2>
-                <p style="margin: 10px;"><mark>프로그래밍</mark>에 관심이 많습니다.
+                <p style="margin: 10px;"><span style="color: rgb(0, 129, 241);">프로그래밍</span>에 관심이 많습니다.
                 <p style="margin-left: 10px;">현재 열심히 공부하며 코딩 중!</p>
             </section>
 
@@ -150,7 +154,7 @@
             <section>
                 <h2 class="subtitle">Education</h2>
                 <table style="margin: 10px;">
-                  <caption>학력 사항</caption>
+                  <caption style="margin-bottom: 10px;">학력 사항</caption>
                   <thead>
                       <tr>
                           <th>출신학교</th>
