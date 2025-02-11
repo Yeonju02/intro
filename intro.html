@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<title>온라인 프로필</title>
-	<meta charset="utf-8">
+    <title>온라인 프로필</title>
+    <meta charset="utf-8">
   <style>
     table {
       width:70%; 
@@ -89,6 +89,36 @@
         display: block;
         margin: 0 auto;
     }
+
+    #time {
+        color: rgb(96, 96, 96);
+        font-weight: bold;
+        font-size: 25px;
+
+    }
+
+    .imgContainer {
+        position: relative;
+    }
+
+    .imgBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .imgContainer:hover .imgBox {
+        opacity: 1;
+    }
   
   </style>
 </head>
@@ -98,7 +128,10 @@
         <!-- 사이드바 -->
         <div id="side">
             <div id="namecard">
-                <img src="media/image1.jpeg" class="img">
+                <div class="imgContainer">
+                    <img src="media/image1.jpeg" class="img">
+                    <div class="imgBox">한국공학대학교, 컴퓨터공학전공</div>
+                </div>
                 <h1 class="name">이름</h1>
                 <h1>장원영</h1>    
                 <h2>Jang Wonyoung</h2>
@@ -107,8 +140,11 @@
                 <h1 class="phone">연락처</h1>
                 <h2>010-1234-5678</h2>
                 <h2>test@naver.com</h2> 
-                <h2><a href="#">SNS</a></h2>                                
+                <h2><a href="#">SNS</a></h2>                               
             </div>          
+            <div style="margin-top: 60px;">
+                <h2>현재시각 : <span id="time"></span></h2> 
+            </div>
         </div>
         <div id="contents">
             <section>
@@ -116,8 +152,6 @@
                 <p style="margin: 10px;"><span style="color: rgb(0, 129, 241);">프로그래밍</span>에 관심이 많습니다.
                 <p style="margin-left: 10px;">현재 열심히 공부하며 코딩 중!</p>
             </section>
-
-            
 
             <!-- 경력 -->
             <section>
@@ -139,7 +173,6 @@
                 </ul>             
             </section>
 
-
             <!-- 숙련도 -->
             <section>
                 <h2 class="subtitle">보유 기술</h2>
@@ -150,7 +183,6 @@
                     </ul>                        
                 </li>
             </section>
-
 
             <!-- 학력 -->
             <section>
@@ -185,3 +217,12 @@
     </div>
 </body>
 </html>
+
+<script>
+    setInterval(() => {
+        let datetime = new Date();
+        let time = datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds();
+        let obj = document.querySelector("#time");
+        obj.innerHTML = time;
+    }, 1000);
+</script>
