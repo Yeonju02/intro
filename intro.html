@@ -119,6 +119,25 @@
     .imgContainer:hover .imgBox {
         opacity: 1;
     }
+
+    #snsContainer {
+        position: relative;
+    }
+
+    #instaId {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 60px;
+        color: white;
+        background-color: rgb(0, 0, 0, 0.5);
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    #snsContainer:hover #instaId {
+        display: block;
+    }
   
   </style>
 </head>
@@ -140,7 +159,13 @@
                 <h1 class="phone">연락처</h1>
                 <h2>010-1234-5678</h2>
                 <h2>test@naver.com</h2> 
-                <h2><a href="#">SNS</a></h2>                               
+                <div id="snsContainer">
+                    <h2><a href="#">SNS</a></h2>
+                    <div id="instaId">
+                        <img src="media/sns_icon.png" alt="SNS 아이콘" style="width: 40px;">
+                        <p>@_yeo_n02</p>
+                    </div>
+                </div>                              
             </div>          
             <div style="margin-top: 60px;">
                 <h2>현재시각 : <span id="time"></span></h2> 
