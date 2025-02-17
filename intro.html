@@ -9,6 +9,7 @@
       border:1px solid #222; 
       border-collapse: collapse; 
       text-align: center;
+      margin-left: 20px;
     }
 
     thead {
@@ -33,7 +34,7 @@
 
     #side {
         width: 300px;
-        height: 850px;
+        height: 950px;
         background-color: aliceblue;
         float: left;
         padding-left: 50px;
@@ -53,6 +54,7 @@
         background-color: eee;
         float: left;
         padding-left: 50px;
+        margin-top: -10px;
         
     }
 
@@ -94,7 +96,35 @@
         color: rgb(96, 96, 96);
         font-weight: bold;
         font-size: 25px;
+    }
 
+    #time-container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+    #github-icon {
+        width: 90px;
+        height: 90px;
+        margin-top: 20px;
+        margin-left: 30px;
+    }
+    #code-button {
+        margin-top: 20px;
+        margin-left: 50px;
+        padding: 10px 20px;
+        background-color: rgb(207, 231, 252);
+        color: rgb(96, 96, 96);
+        font-weight: bold;
+        font-size: 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    #code-button:hover {
+        background-color: rgb(96, 96, 96);
+        color: rgb(207, 231, 252);
     }
 
     .imgContainer {
@@ -125,20 +155,47 @@
     }
 
     #instaId {
-        display: none;
+        display: flex;  
+        align-items: center;  
         position: absolute;
         top: 0;
         left: 60px;
         color: white;
-        background-color: rgb(0, 0, 0, 0.5);
+        background-color: rgb(0, 0, 0, 0.3);
         border-radius: 5px;
         text-align: center;
+        padding: 10px;
+        opacity: 0;
+        transition: opacity 0.3s;
     }
 
-    #snsContainer:hover #instaId {
-        display: block;
+    #sns:hover ~ #instaId {
+        opacity: 1;
     }
   
+    #skills {
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+
+    .skill {
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
+
+    .progress-bar {
+        width: 0;
+        height: 20px;
+        background-color: rgb(177, 216, 249);
+        border-radius: 5px;
+        transition: width 2s ease;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
   </style>
 </head>
 
@@ -160,17 +217,23 @@
                 <h2>010-1234-5678</h2>
                 <h2>test@naver.com</h2> 
                 <div id="snsContainer">
-                    <h2><a href="#">SNS</a></h2>
+                    <h2 id="sns"><a href="https://www.instagram.com/" style="text-decoration: none;">SNS</a></h2>
                     <div id="instaId">
                         <img src="media/sns_icon.png" alt="SNS 아이콘" style="width: 40px;">
-                        <p>@_yeo_n02</p>
+                        <p style="margin-left: 10px;">@_yeo_n02</p>
                     </div>
                 </div>                              
-            </div>          
-            <div style="margin-top: 60px;">
-                <h2>현재시각 : <span id="time"></span></h2> 
-            </div>
+            </div> 
+            <div id="etc">
+                <h2>현재시각 : <span id="time"></span></h2>
+                <div id="time-container">
+                    <img src="media/icon-github.png" id="github-icon" alt="GitHub Icon">
+                    <a href="https://github.com/Yeonju02/intro" id="code-button">code</a>
+                </div>
+            </div>         
         </div>
+
+        <!-- 자기소개 내용들 -->
         <div id="contents">
             <section>
                 <h2 class="subtitle">자기소개</h2>
@@ -199,15 +262,23 @@
             </section>
 
             <!-- 숙련도 -->
-            <section>
-                <h2 class="subtitle">보유 기술</h2>
-                <li style="list-style: none; margin: 10px;"> 
-                    <ul>
-                        <li style="margin-bottom: 10px;">자바 </li>
-                        <li>오라클</li>
-                    </ul>                        
-                </li>
+            <section id="skills">
+                <h2 class="subtitle">보유 기술 숙련도</h2>
+                <div class="skill">
+                    <label>Java</label>
+                    <div class="progress-bar" id="javaProgress"></div>
+                </div>
+                <div class="skill">
+                    <label>JavaScript</label>
+                    <div class="progress-bar" id="jsProgress"></div>
+                </div>
+                <div class="skill">
+                    <label>HTML & CSS</label>
+                    <div class="progress-bar" id="htmlCssProgress"></div>
+                </div>
             </section>
+
+            
 
             <!-- 학력 -->
             <section>
@@ -244,10 +315,52 @@
 </html>
 
 <script>
-    setInterval(() => {
+    // 현재 시간
+	setInterval(()=> {
         let datetime = new Date();
-        let time = datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds();
+	    let hours = datetime.getHours();
+	    let minutes = datetime.getMinutes();
+	    let seconds = datetime.getSeconds();
+	    if(hours < 10){
+		    hours = 0+hours.toString();
+	    }
+	    if(minutes < 10){
+		    minutes = 0+minutes.toString();
+	    }
+	    if(seconds < 10){
+		    seconds = 0+seconds.toString();
+	    }
+        let time = hours + ":" + minutes + ":" + seconds;
+
         let obj = document.querySelector("#time");
         obj.innerHTML = time;
     }, 1000);
+
+    // 스킬 차트 애니메이션
+    window.onload = function() {
+
+        // Intersection Observer API
+        const skillSection = document.querySelector('#skills'); // 보유 기술 숙련도
+        const progressBars = document.querySelectorAll('.progress-bar'); // 숙련도 바
+
+        // 숙련도 바 애니메이션
+        const animateSkillBars = () => {
+            setTimeout(() => {
+                document.getElementById("javaProgress").style.width = "60%"; 
+                document.getElementById("jsProgress").style.width = "70%";  
+                document.getElementById("htmlCssProgress").style.width = "50%"; 
+            }, 500);
+        }
+        // Intersection Observer 설정
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars(); // 요소가 보이면 애니메이션 시작
+                    observer.disconnect(); // 애니메이션이 한 번만 실행되게 observer 종료
+                }
+            });
+        }, { threshold: 0.5 }); // 아래로 스크롤해서 50% 이상 화면에 나타나면 실행
+
+        observer.observe(skillSection); // #skills 섹션을 감지하도록 설정
+    };
 </script>
