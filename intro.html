@@ -69,7 +69,16 @@
     }
 
     section {
-      margin-top: 30px;
+        margin-top: 30px;
+        transition: transfrom 1s;
+    }
+
+    section:hover {
+        transform: scale(1.5);
+        background-color:rgba(188, 221, 248, 0.8); 
+        border-radius: 10px;
+        padding: 10px;
+        
     }
 
     .name {
@@ -164,12 +173,13 @@
         background-color: rgb(0, 0, 0, 0.3);
         border-radius: 5px;
         text-align: center;
-        padding: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
         opacity: 0;
         transition: opacity 0.3s;
     }
 
-    #sns:hover ~ #instaId {
+    #sns:hover + #instaId {
         opacity: 1;
     }
   
@@ -189,6 +199,9 @@
         background-color: rgb(177, 216, 249);
         border-radius: 5px;
         transition: width 2s ease;
+    }
+    .progress-text {
+        margin-left: 50px;
     }
 
     label {
@@ -213,6 +226,7 @@
             transform: translateY(0);
         }
     }
+
 
 
   </style>
@@ -243,6 +257,7 @@
                     </div>
                 </div>                              
             </div> 
+            <hr>
             <div id="etc">
                 <h2>현재시각 : <span id="time"></span></h2>
                 <div id="time-container">
@@ -262,7 +277,7 @@
 
             <!-- 경력 -->
             <section>
-                <h2 class="subtitle">Experience</h2>
+                <h2 class="subtitle">경험</h2>
                 <ul style="margin: 10px;">
                     <li>프론트엔드
                         <ul style="margin-top: 10px;">
@@ -284,16 +299,18 @@
             <section id="skills">
                 <h2 class="subtitle">보유 기술 숙련도</h2>
                 <div class="skill">
-                    <label>Java</label>
+                    <label>Java - 60%</label>
                     <div class="progress-bar" id="javaProgress"></div>
                 </div>
                 <div class="skill">
-                    <label>JavaScript</label>
+                    <label>JavaScript - 70%</label>
                     <div class="progress-bar" id="jsProgress"></div>
+                    
                 </div>
                 <div class="skill">
-                    <label>HTML & CSS</label>
+                    <label>HTML & CSS - 50%</label>
                     <div class="progress-bar" id="htmlCssProgress"></div>
+                    
                 </div>
             </section>
 
@@ -301,7 +318,7 @@
 
             <!-- 학력 -->
             <section>
-                <h2 class="subtitle">Education</h2>
+                <h2 class="subtitle">학력</h2>
                 <table style="margin: 10px;">
                   <caption style="margin-bottom: 10px;">학력 사항</caption>
                   <thead>
@@ -355,14 +372,13 @@
         obj.innerHTML = time;
     }, 1000);
 
-    // 스킬 차트 애니메이션
+    // 스킬 바 애니메이션
     window.onload = function() {
 
         // Intersection Observer API
         const skillSection = document.querySelector('#skills'); // 보유 기술 숙련도
         const progressBars = document.querySelectorAll('.progress-bar'); // 숙련도 바
 
-        // 숙련도 바 애니메이션
         const animateSkillBars = () => {
             setTimeout(() => {
                 document.getElementById("javaProgress").style.width = "60%"; 
